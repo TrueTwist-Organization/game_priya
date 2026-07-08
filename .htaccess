@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteRule ^explore/game/([^/]+)\.html$ explore/game.php?slug=$1 [L,QSA]
+RewriteRule ^explore/contact\.html$ explore/contact.php [L]
+RewriteRule ^explore/privacy\.html$ explore/privacy.php [L]
+RewriteRule ^explore/terms\.html$ explore/terms.php [L]
+
+DirectoryIndex index.php
