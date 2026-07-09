@@ -15,7 +15,7 @@ require dirname(__DIR__) . '/includes/header.php';
 ?>
 
 <h1>Terms and Conditions</h1>
-<p><strong>Last updated:</strong> March 22, 2025</p>
+<p><strong>Last updated:</strong> July 9, 2026</p>
 <a href="<?= e(site_url()) ?>" class="btn-home">Back to Home</a>
 
 <p>Please read these Terms and Conditions carefully before using our Service.</p>
