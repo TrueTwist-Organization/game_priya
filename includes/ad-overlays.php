@@ -66,22 +66,22 @@ $adPageType = $adPageType ?? 'home';
             </div>
         </div>
     </div>
-
-    <div id="demo-rewarded-ad" class="demo-rewarded-ad" aria-hidden="true">
-        <div class="demo-rewarded-content">
-            <span class="ads-prompt">Advertisement · Rewarded</span>
-            <div class="demo-rewarded-video">
-                <div class="demo-rewarded-video-inner">
-                    <div class="demo-rewarded-icon">▶</div>
-                    <strong>Rewarded Video Ad</strong>
-                    <span>Demo · Rewarded Slot</span>
-                </div>
-                <div class="demo-rewarded-progress">
-                    <div class="demo-rewarded-progress-bar" id="demo-rewarded-progress"></div>
-                </div>
-                <p class="demo-rewarded-timer">Reward in <span id="demo-reward-countdown">5</span>s</p>
-            </div>
-            <button type="button" class="demo-rewarded-close" id="demo-rewarded-close" disabled>Close Ad</button>
-        </div>
-    </div>
 <?php endif; ?>
+
+<div id="demo-rewarded-ad" class="demo-rewarded-ad" aria-hidden="true">
+    <div class="demo-rewarded-content">
+        <span class="ads-prompt">Advertisement · Rewarded</span>
+        <div class="demo-rewarded-video">
+            <div class="demo-rewarded-video-inner">
+                <div class="demo-rewarded-icon">▶</div>
+                <strong>Rewarded Video Ad</strong>
+                <span>Demo · Rewarded Slot</span>
+            </div>
+            <div class="demo-rewarded-progress">
+                <div class="demo-rewarded-progress-bar" id="demo-rewarded-progress"></div>
+            </div>
+            <p class="demo-rewarded-timer">Reward in <span id="demo-reward-countdown">5</span>s</p>
+        </div>
+        <button type="button" class="demo-rewarded-close" id="demo-rewarded-close" disabled>Close Ad</button>
+    </div>
+</div>

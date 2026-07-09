@@ -2,10 +2,13 @@
     'use strict';
 
     var interShown = false;
-    var rewardedShownOnLoad = false;
     var pageType = document.body.getAttribute('data-ad-page') || 'home';
     var REWARDED_DURATION = 5;
     var REWARDED_LOAD_DELAY = 2000;
+    var HOME_IDLE_TIMEOUT = 150000;
+    var rewardedTimerId = null;
+    var homeIdleTimer = null;
+    var homeIdleReady = false;
 
     function qs(sel) {
         return document.querySelector(sel);
@@ -61,11 +64,15 @@
             return;
         }
 
+        if (rewardedTimerId) {
+            clearInterval(rewardedTimerId);
+            rewardedTimerId = null;
+        }
+
         var countdownEl = qs('#demo-reward-countdown');
         var progressBar = qs('#demo-rewarded-progress');
         var closeBtn = qs('#demo-rewarded-close');
         var remaining = REWARDED_DURATION;
-        var timerId = null;
 
         overlay.classList.add('is-visible');
         overlay.setAttribute('aria-hidden', 'false');
@@ -83,9 +90,9 @@
         }
 
         function finishRewardedAd() {
-            if (timerId) {
-                clearInterval(timerId);
-                timerId = null;
+            if (rewardedTimerId) {
+                clearInterval(rewardedTimerId);
+                rewardedTimerId = null;
             }
             overlay.classList.remove('is-visible');
             overlay.setAttribute('aria-hidden', 'true');
@@ -102,7 +109,7 @@
             };
         }
 
-        timerId = setInterval(function () {
+        rewardedTimerId = setInterval(function () {
             remaining -= 1;
 
             if (countdownEl) {
@@ -114,8 +121,8 @@
             }
 
             if (remaining <= 0) {
-                clearInterval(timerId);
-                timerId = null;
+                clearInterval(rewardedTimerId);
+                rewardedTimerId = null;
                 if (closeBtn) {
                     closeBtn.disabled = false;
                     closeBtn.classList.add('is-ready');
@@ -130,15 +137,76 @@
 
     window.showDemoRewardedAd = showDemoRewardedAd;
 
+    function scheduleRewardedAd() {
+        setTimeout(function () {
+            showDemoRewardedAd();
+        }, REWARDED_LOAD_DELAY);
+    }
+
     function initRewardedAdOnLoad() {
-        if (pageType !== 'detail' || rewardedShownOnLoad) {
+        if (pageType !== 'detail') {
             return;
         }
 
-        setTimeout(function () {
-            rewardedShownOnLoad = true;
-            showDemoRewardedAd();
-        }, REWARDED_LOAD_DELAY);
+        scheduleRewardedAd();
+    }
+
+    function initRewardedAdOnBack() {
+        if (pageType !== 'detail') {
+            return;
+        }
+
+        window.addEventListener('pageshow', function (event) {
+            if (!event.persisted) {
+                return;
+            }
+
+            var overlay = qs('#demo-rewarded-ad');
+            if (overlay) {
+                overlay.classList.remove('is-visible');
+                overlay.setAttribute('aria-hidden', 'true');
+            }
+
+            scheduleRewardedAd();
+        });
+    }
+
+    function resetHomeIdleTimer() {
+        homeIdleReady = false;
+
+        if (homeIdleTimer) {
+            clearTimeout(homeIdleTimer);
+            homeIdleTimer = null;
+        }
+
+        homeIdleTimer = setTimeout(function () {
+            homeIdleReady = true;
+        }, HOME_IDLE_TIMEOUT);
+    }
+
+    function initHomeIdleRewardedAd() {
+        if (pageType !== 'home' || !qs('#demo-rewarded-ad')) {
+            return;
+        }
+
+        function onHomeActivity() {
+            if (homeIdleReady) {
+                homeIdleReady = false;
+
+                var overlay = qs('#demo-rewarded-ad');
+                if (overlay && !overlay.classList.contains('is-visible')) {
+                    showDemoRewardedAd();
+                }
+            }
+
+            resetHomeIdleTimer();
+        }
+
+        resetHomeIdleTimer();
+
+        ['scroll', 'wheel', 'touchstart', 'mousemove', 'keydown', 'click'].forEach(function (eventName) {
+            window.addEventListener(eventName, onHomeActivity, { passive: true });
+        });
     }
 
     function initFirstClickInterstitial() {
@@ -292,6 +360,11 @@
             initPageLoader();
             initAnchorAd();
             initRewardedAdOnLoad();
+            initRewardedAdOnBack();
+        }
+
+        if (pageType === 'home') {
+            initHomeIdleRewardedAd();
         }
     });
 })();
