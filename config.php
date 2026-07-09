@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-define('SITE_NAME', 'Game Portal');
+define('SITE_NAME', 'PlayVerse Hub');
 define('SITE_TAGLINE', 'Play & Download Top Free Mobile Games');
 define('SITE_EMAIL', 'contact@example.com');
 define('ROOT_PATH', __DIR__);
