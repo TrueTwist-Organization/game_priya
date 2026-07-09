@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 define('SITE_NAME', 'PlayVerse Hub');
 define('SITE_TAGLINE', 'Play & Download Top Free Mobile Games');
-define('SITE_EMAIL', 'contact@example.com');
+define('SITE_EMAIL', 'contact@playversehub.com');
 define('ROOT_PATH', __DIR__);
 define('BASE_URL', '');
 define('DEMO_ADS_ENABLED', true);

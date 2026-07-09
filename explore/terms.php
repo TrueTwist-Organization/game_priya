@@ -79,7 +79,7 @@ require dirname(__DIR__) . '/includes/header.php';
 <h2>Contact Us</h2>
 <p>If You have any questions or concerns about these Terms and Conditions, please contact us:</p>
 <ul>
-    <li>Email: <a href="mailto:contact@game.gameportals.online">contact@game.gameportals.online</a></li>
+    <li>Email: <a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a></li>
 </ul>
 
 <?php require dirname(__DIR__) . '/includes/footer-min.php'; ?>

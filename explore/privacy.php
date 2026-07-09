@@ -85,7 +85,7 @@ require dirname(__DIR__) . '/includes/header.php';
 <p>Your information may be transferred and processed in other countries. By using our Service, you agree to such transfers.</p>
 
 <h3>Deleting Your Personal Data</h3>
-<p>You may request data deletion by contacting us at <a href="mailto:ads@komalpankhfashion.in">ads@komalpankhfashion.in</a>. Certain data may be retained to meet legal requirements.</p>
+<p>You may request data deletion by contacting us at <a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a>. Certain data may be retained to meet legal requirements.</p>
 
 <h3>Disclosure of Your Personal Data</h3>
 <p>Your data may be disclosed:</p>
@@ -107,7 +107,7 @@ require dirname(__DIR__) . '/includes/header.php';
 <h3>Contact Us</h3>
 <p>If you have any questions about this Privacy Policy, contact us at:</p>
 <ul>
-    <li>Email: <a href="mailto:ads@komalpankhfashion.in">ads@komalpankhfashion.in</a></li>
+    <li>Email: <a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a></li>
 </ul>
 
 <?php require dirname(__DIR__) . '/includes/footer-min.php'; ?>
