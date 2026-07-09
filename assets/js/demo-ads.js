@@ -157,6 +157,9 @@
             return;
         }
 
+        var grippy = anchor.querySelector('.demo-anchor-grippy');
+        var collapsed = false;
+
         function setAnchorPosition() {
             if (document.body.clientWidth <= 500) {
                 anchor.classList.add('demo-anchor-ad--top');
@@ -167,10 +170,30 @@
             }
         }
 
+        function setCollapsed(nextCollapsed) {
+            collapsed = nextCollapsed;
+            anchor.classList.toggle('is-collapsed', collapsed);
+
+            if (grippy) {
+                grippy.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+                grippy.setAttribute(
+                    'aria-label',
+                    collapsed ? 'Expand advertisement' : 'Collapse advertisement'
+                );
+            }
+        }
+
+        if (grippy) {
+            grippy.addEventListener('click', function () {
+                setCollapsed(!collapsed);
+            });
+        }
+
         setAnchorPosition();
 
         setTimeout(function () {
             anchor.classList.add('is-visible');
+            anchor.setAttribute('aria-hidden', 'false');
         }, 1200);
 
         window.addEventListener('resize', setAnchorPosition);

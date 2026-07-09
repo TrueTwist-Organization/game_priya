@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="90" viewBox="0 0 120 90" role="img" aria-label="Demo ad creative">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4a6fa5"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#0f2744"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="90" fill="url(#sky)"/>
+  <rect y="58" width="120" height="32" fill="url(#water)"/>
+  <ellipse cx="28" cy="66" rx="18" ry="6" fill="#243b55" opacity="0.8"/>
+  <ellipse cx="78" cy="70" rx="24" ry="7" fill="#243b55" opacity="0.8"/>
+  <path d="M18 58 L34 48 L50 58 Z" fill="#8b9cb3"/>
+  <path d="M62 58 L82 44 L102 58 Z" fill="#6d8099"/>
+  <circle cx="96" cy="18" r="10" fill="#ffd166" opacity="0.85"/>
+</svg>

@@ -26,11 +26,30 @@ $adPageType = $adPageType ?? 'home';
         <div class="loader-text">Loading...</div>
     </div>
 
-    <div id="demo-anchor-ad" class="demo-anchor-ad demo-anchor-ad--bottom">
-        <span class="ads-prompt">Advertisement</span>
-        <div class="demo-anchor-inner">
-            Anchor Ad (Demo)
-            <small>320 × 50 · Bottom / Top on mobile</small>
+    <div id="demo-anchor-ad" class="demo-anchor-ad demo-anchor-ad--bottom" aria-hidden="true">
+        <button type="button" class="demo-anchor-grippy" aria-label="Collapse advertisement" aria-expanded="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+            </svg>
+        </button>
+        <div class="demo-anchor-shell">
+            <a class="demo-anchor-card" href="#" onclick="return false;">
+                <div class="demo-anchor-media">
+                    <span class="demo-anchor-ad-badge">Ad</span>
+                    <img src="<?= e(asset_url('images/demo-anchor-ad.svg')) ?>" alt="" width="120" height="90" />
+                </div>
+                <div class="demo-anchor-body">
+                    <div class="demo-anchor-title">Free-to-play Game</div>
+                    <div class="demo-anchor-subtitle">War Thunder</div>
+                </div>
+                <div class="demo-anchor-actions">
+                    <div class="demo-anchor-meta">
+                        <span class="demo-anchor-info" aria-hidden="true">ⓘ</span>
+                        <span class="demo-anchor-menu" aria-hidden="true">⋮</span>
+                    </div>
+                    <span class="demo-anchor-cta">Open <span aria-hidden="true">→</span></span>
+                </div>
+            </a>
         </div>
     </div>
 
